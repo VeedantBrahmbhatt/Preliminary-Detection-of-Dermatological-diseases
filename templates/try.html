@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hospitals in Vadodara</title>
+    <!-- Include the MapmyIndia JavaScript SDK -->
+    <script src="https://apis.mapmyindia.com/advancedmaps/v1/40fc61ae97e3e151928817751d0acb89/map_load?v=1.3"></script>
+    <style>
+      /* Set the size of the map container */
+      #map-container {
+        width: 100%;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Create a container for the map -->
+    <button onclick="getlocation()">Get Location</button>
+    <div id="map-container"></div>
+
+    <script>
+      //let variable1 = document.getElementById("demo1");
+      function getlocation() {
+        navigator.geolocation.getCurrentPosition(showLoc);
+      }
+      function showLoc(pos) {
+        let x = pos.coords.latitude;
+        let y = pos.coords.longitude;
+
+        var map = new MapmyIndia.Map(
+          "map-container",
+          "40fc61ae97e3e151928817751d0acb89"
+        );
+
+        // Set the initial map view (centered on Vadodara)
+        var vadodaraCoordinates = [x, y]; // Vadodara's latitude and longitude
+        map.setView(vadodaraCoordinates, 12); // Adjust the zoom level as needed
+
+        // Perform a Hospital Search
+        var query = {
+          query: "Hospitals",
+          location: "Vadodara",
+          count: 10,
+        };
+
+        MapmyIndia.querySearch(query, function (data) {
+          if (data.responseCode === "OK") {
+            var hospitals = data.suggestedLocations;
+
+            // Loop through the hospitals and add markers to the map
+            hospitals.forEach(function (hospital) {
+              var marker = new MapmyIndia.Marker({
+                position: [hospital.latitude, hospital.longitude],
+              });
+              map.addLayer(marker);
+            });
+          } else {
+            console.error("Error in search:", data);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

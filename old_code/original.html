@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>Your Minimalist Landing Page</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="sih.jpg" alt="Your Logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#prototype" class="nav-link">Prototype</a></li>
+          <li><a href="#ourteam" class="nav-link">Our Team</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="landing" id="landing">
+        <div class="centered">
+          <h1>Hi There!</h1>
+          <h2>We're <span class="innominds-text">InnoMinds</span></h2>
+          <p class="product-description">
+            We have worked on an AI-based tool for preliminary diagnosis of
+            Dermatological manifestations
+          </p>
+        </div>
+      </section>
+      <section class="prototype" id="prototype">
+        <div class="centered">
+          <h2>Prototype</h2>
+          <h3>Enter your skin sample</h3>
+          <p class="product-description">
+            Take input as an image or capture using a camera:
+          </p>
+          <br />
+          <input type="file" id="imageInput" accept="image/*" />
+          <button id="openCameraButton" class="nav-link">
+            Capture from Camera
+          </button>
+          <div id="cameraModal" class="modal">
+            <div class="modal-content">
+              <video id="cameraFeed" autoplay></video>
+              <button id="takePictureButton">Take Picture</button>
+            </div>
+          </div>
+
+          <img id="capturedImage" alt="" />
+        </div>
+      </section>
+      <section class="ourteam" id="ourteam">
+        <h1 class="about-us">About Us</h1>
+
+        <div class="team-members">
+          <div class="team-member-card">
+            <img src="avatar.jpeg" alt="Vedansh Kamdar" />
+            <h2>Vedansh Kamdar</h2>
+            <ul>
+              <li>Roll No: 21BCP259</li>
+            </ul>
+          </div>
+
+          <div class="team-member-card">
+            <img src="avatar.jpeg" alt="Param Shah" />
+            <h2>Param Shah</h2>
+            <ul>
+              <li>Roll No: 21BCP280</li>
+            </ul>
+          </div>
+
+          <div class="team-member-card">
+            <img src="avatar.jpeg" alt="Meet Chheda" />
+            <h2>Meet Chheda</h2>
+            <ul>
+              <li>Roll No: 21BCP258</li>
+            </ul>
+          </div>
+
+          <div class="team-member-card">
+            <img src="avatar.jpeg" alt="Vedansh Kamdar" />
+            <h2>Virendrasinh Khuman</h2>
+            <ul>
+              <li>Roll No: 21BCP282</li>
+            </ul>
+          </div>
+
+          <div class="team-member-card">
+            <img src="avatar.jpeg" alt="Vedansh Kamdar" />
+            <h2>Vedant Brahmabhatt</h2>
+            <ul>
+              <li>Roll No: 21BCP118</li>
+            </ul>
+          </div>
+
+          <div class="team-member-card">
+            <img src="avatar.jpeg" alt="Sakshi Sutaria" />
+            <h2>Sakshi Sutaria</h2>
+            <ul>
+              <li>Roll No: 21BIT212</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

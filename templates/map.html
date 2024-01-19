@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearest Doctors Map</title>
+    <!-- Include Leaflet CSS and JavaScript libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+    
+    <script>
+        let user_lat=Number(JSON.parse('{{ user_lat | safe }}'))
+        let uesr_lon=Number(JSON.parse('{{ user_lon | safe }}'))
+        var map = L.map('map').setView([user_lat, uesr_lon], 12); // Centered at New York City
+    
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    
+        // Parse the nearest_doctors_json data from Flask into a JavaScript object
+        var nearestDoctors = JSON.parse('{{ nearest_doctors_json | safe }}');
+    
+        nearestDoctors.forEach(function(doctor) {
+            var popupContent = `<b>Name:</b> ${doctor.name}<br><b>Address:</b> ${doctor.address}<br><b>Phone:</b> ${doctor.phone}`;
+            L.marker([doctor.lat, doctor.lon]).bindPopup(popupContent).addTo(map);
+        });
+    </script>
+    
+</body>
+</html>
